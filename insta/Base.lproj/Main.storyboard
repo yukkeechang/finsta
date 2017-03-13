@@ -185,6 +185,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJ1-2Z-Ycq">
+                                                    <rect key="frame" x="320" y="0.0" width="48" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Logout"/>
+                                                    <connections>
+                                                        <action selector="logoutButton:" destination="pOX-ok-XXx" eventType="touchUpInside" id="YCp-Oh-Rn1"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -201,6 +209,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="D7u-Xg-oZc"/>
                     <connections>
                         <outlet property="tableView" destination="uqa-EO-VqY" id="qpD-Y0-wND"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="logout" id="U43-Cl-0tL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AC5-sO-qlz" userLabel="First Responder" sceneMemberID="firstResponder"/>

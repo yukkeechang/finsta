@@ -47,6 +47,16 @@ UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
         }
      })
    }
+    @IBAction func logoutButton(_ sender: Any) {
+        PFUser.logOutInBackground { (error: Error?) in
+            print ("logged out")
+        }
+        //bring you to sign up page
+        self.performSegue(withIdentifier: "logout", sender: nil)
+
+
+    }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if posts != nil {
