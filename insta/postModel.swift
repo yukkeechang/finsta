@@ -13,8 +13,8 @@ class Post: NSObject {
         
     
     
-    class func postUserImage(image: UIImage?, withCompletion completion: @escaping PFBooleanResultBlock) {
-            var caption : String?
+    class func postUserImage(image: UIImage?, caption: String?, withCompletion completion: @escaping PFBooleanResultBlock) {
+            var caption = caption ?? "picture caption"
             let post = PFObject(className: "Post")
             //reference this in the cell, then do the didSet method to get data from here
             
