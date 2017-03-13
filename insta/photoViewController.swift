@@ -34,6 +34,13 @@ class photoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.present(postImage, animated: true, completion: nil)
     }
     
+    @IBAction func logoutButton(_ sender: Any) {
+        PFUser.logOutInBackground { (error: Error?) in
+            self.dismiss(animated: true, completion: nil)
+            print ("logged out")
+            
+       }
+    }
     
     //lets image be captured by the UIImagePickerController
    
@@ -63,9 +70,12 @@ class photoViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 print("error in publishing post is : \(error?.localizedDescription)")
             }
         }
+       
+
     }
-
-
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
