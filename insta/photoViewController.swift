@@ -36,14 +36,19 @@ class photoViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     
     //lets image be captured by the UIImagePickerController
-    // Why is it string but not UIImage
+   
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             toPostImage = image
-            uploadPicView.image = toPostImage //this basically sets that selected image to my image view...even if the image format is unknown and an error!
+            uploadPicView.image = toPostImage
+        //sets selected image to my image view...even if the image format is unknown
         }
-        //if I take this line out, my function above won't run
-        self.dismiss(animated: true, completion: nil)
+        //if this line is taken out, above function won't run..it says when you get the image on to your image view, go back to loginVC..but I'm only brought back to loginVC after I click post
+        //Is this the reason why my publishPost won't run? Probably not
+         self.dismiss(animated: true, completion: nil)
+        
+        //need this instead to go to homeTimeline and should go in the publishPost func instead
+        //self.performSegue(withIdentifier: "backToHome", sender: self)
         
     }
     @IBAction func publishPost(_ sender: Any) {
@@ -52,6 +57,8 @@ class photoViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 print("picture on database")
                 //bring me back to log in page if post is successful
                 self.dismiss(animated: true, completion: nil)
+                //bring me back to hometimeline if post is successful
+                //self.performSegue(withIdentifier: "backToHome", sender: self)
             } else {
                 print("error in publishing post is : \(error?.localizedDescription)")
             }
