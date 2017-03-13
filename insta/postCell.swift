@@ -16,10 +16,8 @@ class postCell: UITableViewCell {
     var post: PFObject! {
         didSet{
             
-        //  self.captionTextField.text = post.caption
-            
-            if let postImagee = post["media"] as? PFFile {
-                postImagee.getDataInBackground(block: { (imageData: Data?, error: Error?) in
+            if let postImg = post["media"] as? PFFile {
+                postImg.getDataInBackground(block: { (imageData: Data?, error: Error?) in
                     if let imageData = imageData {
                         self.postImage.image = UIImage.init(data: imageData)
             
