@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,9 +16,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        Parse.initialize(
+            with: ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "instagram"
+                configuration.clientKey = nil  // set to nil assuming you have not set clientKey
+                configuration.server = "http://arcane-lake-31400.herokuapp.com/parse"
+            })
+        )
+        
+       if PFUser.current() != nil {
+            print("There is a current user!")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeTimelineViewController = storyboard.instantiateViewController(withIdentifier: "homeTimeline")
+            let photosViewController = storyboard.instantiateViewController(withIdentifier: "photoViewController")
+            let tabBarController = UITabBarController()
+            tabBarController.viewControllers = [homeTimelineViewController, photosViewController]
+
+        } else {
+            print ("error with user (appdelegate)")
+        } //you did this on storyboard already w tab bar controller lmfao 
+        
         // Override point for customization after application launch.
         return true
     }
+    
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
