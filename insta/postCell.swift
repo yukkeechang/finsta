@@ -15,7 +15,7 @@ class postCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     var post: PFObject! {
         didSet{
-            
+            captionLabel.text = post["caption"] as? String
             if let postImg = post["media"] as? PFFile {
                 postImg.getDataInBackground(block: { (imageData: Data?, error: Error?) in
                     if let imageData = imageData {

@@ -27,15 +27,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
        if PFUser.current() != nil {
             print("There is a current user!")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeTimelineViewController = storyboard.instantiateViewController(withIdentifier: "homeTimeline")
+           /*   let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           // window = UIWindow(frame: UIScreen.main.bounds)
+           // window?.makeKeyAndVisible()
+            let homeTimelineViewController  = storyboard.instantiateViewController(withIdentifier: "homeTimeline")
+        window?.rootViewController = homeTimelineViewController
             let photosViewController = storyboard.instantiateViewController(withIdentifier: "photoViewController")
             let tabBarController = UITabBarController()
-            tabBarController.viewControllers = [homeTimelineViewController, photosViewController]
+           tabBarController.viewControllers = [homeTimelineViewController, photosViewController] */
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeTimelineViewController = storyboard.instantiateViewController(withIdentifier: "homeTimeline")
+        let photosViewController = storyboard.instantiateViewController(withIdentifier: "photoViewController")
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [homeTimelineViewController, photosViewController]
+        
+        
+       
+
 
         } else {
-            print ("error with user (appdelegate)")
-        } //you did this on storyboard already w tab bar controller lmfao 
+            print ("No current user logged in")
+        } //you did this on storyboard already w tab bar controller
         
         // Override point for customization after application launch.
         return true

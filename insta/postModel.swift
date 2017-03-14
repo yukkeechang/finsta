@@ -32,6 +32,7 @@ class Post: NSObject {
             if let image = image {
             if let imageData = UIImagePNGRepresentation(image) {
                     return PFFile(name: "image.png", data: imageData)
+                print("successful convert to pff")
                 }
             }
             print("error in converting to pff file!")

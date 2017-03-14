@@ -61,7 +61,7 @@ class photoViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBAction func publishPost(_ sender: Any) {
         Post.postUserImage(image: toPostImage, caption: captionTextView.text ) { (success: Bool?, error: Error?) in
             if success! {
-                print("picture on database")
+                print("ran publishPost function")
                 //bring me back to log in page if post is successful
                 self.dismiss(animated: true, completion: nil)
                 //bring me back to hometimeline if post is successful
